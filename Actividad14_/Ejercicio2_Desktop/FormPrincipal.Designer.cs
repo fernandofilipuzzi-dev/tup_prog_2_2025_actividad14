@@ -44,15 +44,17 @@
             label7 = new Label();
             groupBox1 = new GroupBox();
             btnGenerar = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            bntResumen = new Button();
+            btnSalir = new Button();
+            btnEjemplo = new Button();
+            openFileDialog1 = new OpenFileDialog();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Buenos Aires", "Bariloche", "Rosario" });
             comboBox1.Location = new Point(126, 12);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(121, 23);
@@ -61,6 +63,7 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "Bus", "Avion" });
             comboBox2.Location = new Point(126, 70);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(121, 23);
@@ -75,28 +78,28 @@
             // 
             // tbCuit
             // 
-            tbCuit.Location = new Point(106, 31);
+            tbCuit.Location = new Point(114, 23);
             tbCuit.Name = "tbCuit";
             tbCuit.Size = new Size(100, 23);
             tbCuit.TabIndex = 3;
             // 
             // tbNombre
             // 
-            tbNombre.Location = new Point(106, 60);
+            tbNombre.Location = new Point(114, 52);
             tbNombre.Name = "tbNombre";
             tbNombre.Size = new Size(100, 23);
             tbNombre.TabIndex = 4;
             // 
             // tbTelefono
             // 
-            tbTelefono.Location = new Point(106, 89);
+            tbTelefono.Location = new Point(114, 81);
             tbTelefono.Name = "tbTelefono";
             tbTelefono.Size = new Size(100, 23);
             tbTelefono.TabIndex = 5;
             // 
             // tbTarjeta
             // 
-            tbTarjeta.Location = new Point(106, 118);
+            tbTarjeta.Location = new Point(114, 110);
             tbTarjeta.Name = "tbTarjeta";
             tbTarjeta.Size = new Size(100, 23);
             tbTarjeta.TabIndex = 6;
@@ -131,38 +134,38 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(41, 31);
+            label4.Location = new Point(49, 23);
             label4.Name = "label4";
-            label4.Size = new Size(38, 15);
+            label4.Size = new Size(62, 15);
             label4.TabIndex = 11;
-            label4.Text = "label4";
+            label4.Text = "CUIT/CUIL";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(36, 63);
+            label5.Location = new Point(49, 55);
             label5.Name = "label5";
-            label5.Size = new Size(38, 15);
+            label5.Size = new Size(51, 15);
             label5.TabIndex = 12;
-            label5.Text = "label5";
+            label5.Text = "Nombre";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(36, 92);
+            label6.Location = new Point(49, 84);
             label6.Name = "label6";
-            label6.Size = new Size(38, 15);
+            label6.Size = new Size(52, 15);
             label6.TabIndex = 13;
-            label6.Text = "label6";
+            label6.Text = "Telefono";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(33, 121);
+            label7.Location = new Point(41, 113);
             label7.Name = "label7";
-            label7.Size = new Size(38, 15);
+            label7.Size = new Size(58, 15);
             label7.TabIndex = 14;
-            label7.Text = "label7";
+            label7.Text = "N° Tarjeta";
             // 
             // groupBox1
             // 
@@ -176,7 +179,7 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Location = new Point(12, 99);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(353, 147);
+            groupBox1.Size = new Size(353, 137);
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
@@ -189,42 +192,50 @@
             btnGenerar.TabIndex = 17;
             btnGenerar.Text = "Generar";
             btnGenerar.UseVisualStyleBackColor = true;
+            btnGenerar.Click += btnGenerar_Click;
             // 
-            // button2
+            // bntResumen
             // 
-            button2.Location = new Point(270, 60);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 18;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            bntResumen.Location = new Point(270, 74);
+            bntResumen.Name = "bntResumen";
+            bntResumen.Size = new Size(75, 23);
+            bntResumen.TabIndex = 18;
+            bntResumen.Text = "Resumen";
+            bntResumen.UseVisualStyleBackColor = true;
+            bntResumen.Click += bntResumen_Click;
             // 
-            // button3
+            // btnSalir
             // 
-            button3.Location = new Point(231, 252);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 19;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
+            btnSalir.Location = new Point(251, 251);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(75, 23);
+            btnSalir.TabIndex = 19;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
             // 
-            // button4
+            // btnEjemplo
             // 
-            button4.Location = new Point(53, 252);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 20;
-            button4.Text = "button4";
-            button4.UseVisualStyleBackColor = true;
+            btnEjemplo.Location = new Point(53, 252);
+            btnEjemplo.Name = "btnEjemplo";
+            btnEjemplo.Size = new Size(75, 23);
+            btnEjemplo.TabIndex = 20;
+            btnEjemplo.Text = "Ejemplo";
+            btnEjemplo.UseVisualStyleBackColor = true;
+            btnEjemplo.Click += btnEjemplo_Click;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
             // 
             // FormPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(388, 286);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(btnEjemplo);
+            Controls.Add(btnSalir);
+            Controls.Add(bntResumen);
             Controls.Add(btnGenerar);
             Controls.Add(groupBox1);
             Controls.Add(label3);
@@ -234,7 +245,10 @@
             Controls.Add(comboBox2);
             Controls.Add(comboBox1);
             Name = "FormPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            FormClosing += FormPrincipal_FormClosing;
+            Load += FormPrincipal_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -259,8 +273,10 @@
         private Label label7;
         private GroupBox groupBox1;
         private Button btnGenerar;
-        private Button button2;
-        private Button button3;
+        private Button bntResumen;
+        private Button btnSalir;
         private Button button4;
+        private Button btnEjemplo;
+        private OpenFileDialog openFileDialog1;
     }
 }

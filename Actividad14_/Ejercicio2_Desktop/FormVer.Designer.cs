@@ -28,12 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Ver";
+            listBox1 = new ListBox();
+            button1 = new Button();
+            SuspendLayout();
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(0, 3);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(405, 229);
+            listBox1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.DialogResult = DialogResult.OK;
+            button1.Location = new Point(162, 238);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 1;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // FormVer
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(409, 269);
+            Controls.Add(button1);
+            Controls.Add(listBox1);
+            Name = "FormVer";
+            Text = "Ver";
+            ResumeLayout(false);
         }
 
         #endregion
+        private Button button1;
+        public ListBox listBox1;
     }
 }

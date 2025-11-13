@@ -2,6 +2,7 @@
 
 namespace Ejercicio1_Models;
 
+[Serializable]
 public class Ticket : IComparable<Ticket>
 {
     public DateTime Fecha { get; set; }
