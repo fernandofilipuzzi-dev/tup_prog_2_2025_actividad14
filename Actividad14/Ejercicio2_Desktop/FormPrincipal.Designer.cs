@@ -74,9 +74,11 @@
             // 
             // tbPrecio
             // 
+            tbPrecio.BackColor = SystemColors.InactiveCaption;
             tbPrecio.Location = new Point(162, 57);
             tbPrecio.Margin = new Padding(4);
             tbPrecio.Name = "tbPrecio";
+            tbPrecio.ReadOnly = true;
             tbPrecio.Size = new Size(127, 29);
             tbPrecio.TabIndex = 2;
             // 
