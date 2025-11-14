@@ -14,9 +14,9 @@ public class Sistema
         transportes.Add(transporte);
     }
 
-    public void CrearTicket(string cuit, string nombre, string telefono, string tarjeta,string destino, string tipo)
+    public Ticket CrearTicket(string cuit, string nombre, string telefono, string tarjeta,string destino, string tipo)
     {
-        Transporte t=ResuelvaTransporte(destino, tipo);
+        Transporte t=ResuelveTransporte(destino, tipo);
 
         if (t != null)
         {
@@ -24,6 +24,7 @@ public class Sistema
             ticket.Destino = destino;
             ticket.PrecioFinal = t.CalcularPrecioFinal();
             tickets.Add(ticket);
+            return ticket;
         }
         else
         { 
@@ -31,7 +32,7 @@ public class Sistema
         }
     }
 
-    public Transporte ResuelvaTransporte(string destino,string tipo)
+    public Transporte ResuelveTransporte(string destino,string tipo)
     {
         Transporte buscado = null;
         for (int n = 0; n < transportes.Count && buscado == null; n++)
@@ -96,5 +97,16 @@ public class Sistema
         }
 
         return lista;
+    }
+
+    public string[] VerDestinos()
+    { 
+        string [] destinos = new string[transportes.Count];
+        int n = 0;
+        foreach (Transporte t in transportes)
+        {
+            destinos[n++]=t.Destino;
+        }
+        return destinos;
     }
 }

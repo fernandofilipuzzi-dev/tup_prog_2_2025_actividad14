@@ -17,7 +17,7 @@ public partial class FormPrincipal : Form
         try
         {
 
-            string destino = cbDestino.SelectedItem as string;
+            string destino = cbDestinos.SelectedItem as string;
             string tipo = cbTransporte.SelectedItem as string;
 
             string cuit = tbCuit.Text;
@@ -25,7 +25,19 @@ public partial class FormPrincipal : Form
             string telefono = tbTelefono.Text;
             string tarjeta = tbTarjeta.Text;
 
-            miEmpresa.CrearTicket(cuit, nombre, telefono, tarjeta, destino, tipo);
+            Ticket ticket=miEmpresa.CrearTicket(cuit, nombre, telefono, tarjeta, destino, tipo);
+
+            //mostrar tickets
+            if (ticket != null)
+            {
+                FormVer fVer = new FormVer();
+                fVer.listBox1.Items.Add(ticket.ToString());
+                fVer.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No se pudo generar el ticket", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         catch (Exception ex)
         {
@@ -68,6 +80,11 @@ public partial class FormPrincipal : Form
         }
 
         //
+
+        if (miEmpresa != null)
+        {
+            cbDestinos.Items.AddRange(miEmpresa.VerDestinos());
+        }
     }
 
     private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -111,13 +128,35 @@ public partial class FormPrincipal : Form
                 fs = new FileStream(path, FileMode.Open, FileAccess.Read);
                 miEmpresa.ImportarTransporte(fs);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 if (fs != null) fs.Close(); ;
+            }
+
+            cbDestinos.Items.Clear();
+            cbDestinos.Items.AddRange(miEmpresa.VerDestinos());
+        }
+    }
+
+    private void cbTransporte_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (cbDestinos.SelectedIndex != -1 && cbTransporte.SelectedIndex != -1)
+        {
+            string destino = cbDestinos.SelectedItem as string;
+            string tipo= cbTransporte.SelectedItem as string;
+
+            Transporte t=miEmpresa.ResuelveTransporte(destino, tipo);
+            if (t != null)
+            {
+                tbPrecio.Text = t.CalcularPrecioFinal().ToString("0.00");
+            }
+            else
+            { 
+                MessageBox.Show("No hay transporte disponible para ese destino y tipo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

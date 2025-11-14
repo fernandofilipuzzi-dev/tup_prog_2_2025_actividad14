@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            cbDestino = new ComboBox();
+            cbDestinos = new ComboBox();
             cbTransporte = new ComboBox();
             tbPrecio = new TextBox();
             tbCuit = new TextBox();
@@ -51,30 +51,31 @@
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // cbDestino
+            // cbDestinos
             // 
-            cbDestino.FormattingEnabled = true;
-            cbDestino.Items.AddRange(new object[] { "Buenos Aires", "Bariloche", "Rosario" });
-            cbDestino.Location = new Point(162, 17);
-            cbDestino.Margin = new Padding(4, 4, 4, 4);
-            cbDestino.Name = "cbDestino";
-            cbDestino.Size = new Size(154, 29);
-            cbDestino.TabIndex = 0;
+            cbDestinos.FormattingEnabled = true;
+            cbDestinos.Location = new Point(162, 17);
+            cbDestinos.Margin = new Padding(4);
+            cbDestinos.Name = "cbDestinos";
+            cbDestinos.Size = new Size(154, 29);
+            cbDestinos.TabIndex = 0;
+            cbDestinos.SelectedIndexChanged += cbTransporte_SelectedIndexChanged;
             // 
             // cbTransporte
             // 
             cbTransporte.FormattingEnabled = true;
             cbTransporte.Items.AddRange(new object[] { "Bus", "Avion" });
             cbTransporte.Location = new Point(162, 98);
-            cbTransporte.Margin = new Padding(4, 4, 4, 4);
+            cbTransporte.Margin = new Padding(4);
             cbTransporte.Name = "cbTransporte";
             cbTransporte.Size = new Size(154, 29);
             cbTransporte.TabIndex = 1;
+            cbTransporte.SelectedIndexChanged += cbTransporte_SelectedIndexChanged;
             // 
             // tbPrecio
             // 
             tbPrecio.Location = new Point(162, 57);
-            tbPrecio.Margin = new Padding(4, 4, 4, 4);
+            tbPrecio.Margin = new Padding(4);
             tbPrecio.Name = "tbPrecio";
             tbPrecio.Size = new Size(127, 29);
             tbPrecio.TabIndex = 2;
@@ -82,7 +83,7 @@
             // tbCuit
             // 
             tbCuit.Location = new Point(147, 32);
-            tbCuit.Margin = new Padding(4, 4, 4, 4);
+            tbCuit.Margin = new Padding(4);
             tbCuit.Name = "tbCuit";
             tbCuit.Size = new Size(127, 29);
             tbCuit.TabIndex = 3;
@@ -90,7 +91,7 @@
             // tbNombre
             // 
             tbNombre.Location = new Point(147, 73);
-            tbNombre.Margin = new Padding(4, 4, 4, 4);
+            tbNombre.Margin = new Padding(4);
             tbNombre.Name = "tbNombre";
             tbNombre.Size = new Size(281, 29);
             tbNombre.TabIndex = 4;
@@ -98,7 +99,7 @@
             // tbTelefono
             // 
             tbTelefono.Location = new Point(147, 113);
-            tbTelefono.Margin = new Padding(4, 4, 4, 4);
+            tbTelefono.Margin = new Padding(4);
             tbTelefono.Name = "tbTelefono";
             tbTelefono.Size = new Size(127, 29);
             tbTelefono.TabIndex = 5;
@@ -106,7 +107,7 @@
             // tbTarjeta
             // 
             tbTarjeta.Location = new Point(147, 154);
-            tbTarjeta.Margin = new Padding(4, 4, 4, 4);
+            tbTarjeta.Margin = new Padding(4);
             tbTarjeta.Name = "tbTarjeta";
             tbTarjeta.Size = new Size(127, 29);
             tbTarjeta.TabIndex = 6;
@@ -192,18 +193,18 @@
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label4);
             groupBox1.Location = new Point(15, 139);
-            groupBox1.Margin = new Padding(4, 4, 4, 4);
+            groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 4, 4, 4);
+            groupBox1.Padding = new Padding(4);
             groupBox1.Size = new Size(454, 192);
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBox1.Text = "Datos pasajero:";
             // 
             // btnGenerar
             // 
             btnGenerar.Location = new Point(347, 15);
-            btnGenerar.Margin = new Padding(4, 4, 4, 4);
+            btnGenerar.Margin = new Padding(4);
             btnGenerar.Name = "btnGenerar";
             btnGenerar.Size = new Size(96, 60);
             btnGenerar.TabIndex = 17;
@@ -214,7 +215,7 @@
             // bntResumen
             // 
             bntResumen.Location = new Point(347, 104);
-            bntResumen.Margin = new Padding(4, 4, 4, 4);
+            bntResumen.Margin = new Padding(4);
             bntResumen.Name = "bntResumen";
             bntResumen.Size = new Size(96, 32);
             bntResumen.TabIndex = 18;
@@ -225,7 +226,7 @@
             // btnSalir
             // 
             btnSalir.Location = new Point(326, 339);
-            btnSalir.Margin = new Padding(4, 4, 4, 4);
+            btnSalir.Margin = new Padding(4);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(96, 32);
             btnSalir.TabIndex = 19;
@@ -236,7 +237,7 @@
             // btnEjemplo
             // 
             btnEjemplo.Location = new Point(64, 339);
-            btnEjemplo.Margin = new Padding(4, 4, 4, 4);
+            btnEjemplo.Margin = new Padding(4);
             btnEjemplo.Name = "btnEjemplo";
             btnEjemplo.Size = new Size(96, 32);
             btnEjemplo.TabIndex = 20;
@@ -263,12 +264,12 @@
             Controls.Add(label1);
             Controls.Add(tbPrecio);
             Controls.Add(cbTransporte);
-            Controls.Add(cbDestino);
+            Controls.Add(cbDestinos);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "FormPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Venta Pasajes";
             FormClosing += FormPrincipal_FormClosing;
             Load += FormPrincipal_Load;
             groupBox1.ResumeLayout(false);
@@ -279,7 +280,7 @@
 
         #endregion
 
-        private ComboBox cbDestino;
+        private ComboBox cbDestinos;
         private ComboBox cbTransporte;
         private TextBox tbPrecio;
         private TextBox tbCuit;

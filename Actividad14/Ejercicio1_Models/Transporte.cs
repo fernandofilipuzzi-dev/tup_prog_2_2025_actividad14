@@ -4,16 +4,14 @@ namespace Ejercicio1_Models;
 [Serializable]
 public abstract class Transporte
 {
-    private double precio;
+    private double PrecioBase { get; set; }
+    public string Destino { get; set; }
 
     public Transporte(string destino, double precio)
     {
         Destino = destino;
-        this.precio = precio;
+        this.PrecioBase = precio;
     }
-
-    public double PrecioBase { get; set; }
-    public string Destino { get; set; }
 
 
     virtual public double CalcularPrecioFinal()
